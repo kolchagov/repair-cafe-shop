@@ -1,5 +1,7 @@
 # Repair cafe shop — Neighborhood Repair Café Log
 
+Coffee lovers, think green: don't throw away what can be repaired. 
+
 ## Concept
 
 A small community repair café app for cataloguing items brought in for repair, 

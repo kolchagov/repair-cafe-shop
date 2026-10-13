@@ -1,6 +1,7 @@
 import uuid
 from django.db import models
 
+from catalog.models import Item
 from volunteers.models import Repairer
 
 
@@ -17,9 +18,10 @@ class RepairTicket(models.Model):
         unique=True
     )
 
-    item = models.ForeignKey(
-        to='Item',
+    item = models.OneToOneField(
+        to=Item,
         on_delete=models.CASCADE,
+        related_name='item',
     )
 
     serial_number = models.TextField(
@@ -33,7 +35,6 @@ class RepairTicket(models.Model):
 
     repairers = models.ManyToManyField(
         to=Repairer,
-
     )
 
     def __str__(self):

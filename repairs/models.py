@@ -18,10 +18,10 @@ class RepairTicket(models.Model):
         unique=True
     )
 
-    item = models.OneToOneField(
+    item = models.ForeignKey(
         to=Item,
         on_delete=models.CASCADE,
-        related_name='item',
+        related_name='repair_tickets',
     )
 
     serial_number = models.TextField(

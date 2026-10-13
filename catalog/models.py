@@ -27,7 +27,7 @@ class Item(models.Model):
     category = models.ForeignKey(
         to='Category',
         on_delete=models.CASCADE,
-        related_name='categories',
+        related_name='items',
     )
     brand = models.CharField(
         max_length=100,

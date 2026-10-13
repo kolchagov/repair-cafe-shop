@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 
 PROJECT_APPS = [
     "catalog",
+    "volunteers"
 ]
 
 INSTALLED_APPS = [

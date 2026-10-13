@@ -16,7 +16,7 @@ optional photo URL.
 2. `volunteers` - handles voluntary repair technicians
   - `Repairer`: name, skill choice, phone, optional email, and optional notes.
 3. `repairs`
-  - `RepairTicket`: unique generated code, item (`ForeignKey`), title,
+  - `RepairTicket`: unique generated code, item (`ForeignKey`), serial number,
 status choices (`received`, `in_progress`, `fixed`, `unfixable`),
 intake date, diagnosis, non-negative cost estimate,
 and repairers (`ManyToManyField`).

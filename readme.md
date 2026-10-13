@@ -20,5 +20,14 @@ intake date, diagnosis, non-negative cost estimate,
 and repairers (`ManyToManyField`).
 
 ## Setup and configuration
+Needed steps to prepare the app: 
+1. Install dependencies:
+```shell
+pip install -r requirements.txt
+```
+2. Make migrations:
+```shell
+pyhton manage.py migrate
+```
 
 TODO: project requirements, credentials, environment variables

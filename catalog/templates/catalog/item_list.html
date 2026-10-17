@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Repair café items</title>
+</head>
+<body>
+    <h1>Items for repair</h1>
+    {% if item_list %}
+        <ul>
+            {% for item in item_list %}
+                <li>{{ item.brand }} ({{ item.category.name }}) — {{ item.problem_description }} Owner: {{ item.owner_name }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No items have been submitted for repair.</p>
+    {% endif %}
+</body>
+</html>

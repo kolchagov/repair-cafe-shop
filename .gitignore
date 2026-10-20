@@ -1,2 +1,6 @@
 /db.sqlite3
 .idea/
+.venv/
+__pycache__/
+*.py[cod]
+/media/

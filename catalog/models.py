@@ -1,4 +1,6 @@
+from django.core.validators import RegexValidator
 from django.db import models
+
 
 class Category(models.Model):
     """
@@ -32,7 +34,14 @@ class Item(models.Model):
     brand = models.CharField(
         max_length=100,
     )
-    problem_description = models.TextField()
+    problem_description = models.TextField(
+        validators=[
+            RegexValidator(
+                regex='^\w+(?: \w+){3,}$',
+                message='Give meaningful problem description. At least four words required.',
+            )
+        ]
+    )
     photo = models.ImageField(
         upload_to='images/',
         blank=True,

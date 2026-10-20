@@ -1,4 +1,4 @@
-from django.core.validators import RegexValidator
+from django.core.validators import RegexValidator, MinLengthValidator
 from django.db import models
 
 class RepairSkills(models.TextChoices):
@@ -9,7 +9,13 @@ class RepairSkills(models.TextChoices):
 
 class Repairer(models.Model):
     name = models.CharField(
-        max_length=100
+        max_length=100,
+        validators=[
+            MinLengthValidator(
+                10,
+                message="Repairer name must be at least 10 characters",
+            )
+        ]
     )
     skills = models.CharField(
         max_length=100,
@@ -20,8 +26,8 @@ class Repairer(models.Model):
         max_length=15,
         validators=[
             RegexValidator(
-                regex=r"^\+?1?\d{9,15}$",
-                message="Phone number must be entered in the format: '+999999999', up to 15 digits",
+                regex=r"^[+0]?\d{9,15}$",
+                message="Phone number format: '+999999999 or 099999999', up to 15 digits",
             )
         ]
     )

@@ -1,5 +1,8 @@
 import uuid
+
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from django.utils import timezone
 
 from catalog.models import Item
 from volunteers.models import Repairer
@@ -10,6 +13,7 @@ class StatusChoices(models.TextChoices):
     IN_PROGRESS = 'in-progress', 'in-progress'
     FIXED = 'fixed', 'fixed'
     UNFIXABLE = 'unfixable', 'unfixable'
+
 
 class RepairTicket(models.Model):
     code = models.UUIDField(
@@ -36,6 +40,27 @@ class RepairTicket(models.Model):
     repairers = models.ManyToManyField(
         to=Repairer,
     )
+
+    diagnosis = models.TextField()
+
+    spare_parts_cost = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        validators=[
+            MinValueValidator(0)
+        ],
+    )
+
+    intake_date = models.DateField(
+        default=timezone.localdate,
+        validators=[
+            MaxValueValidator(
+                timezone.localdate,
+                message='Intake date cannot be in the future.',
+            )
+        ],
+    )
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f"{self.item.brand}, SN:{self.serial_number}, owner:{self.item.owner_name} ({self.status})"

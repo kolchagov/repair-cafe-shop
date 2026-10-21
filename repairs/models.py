@@ -59,4 +59,4 @@ class RepairTicket(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.item.brand}, SN:{self.serial_number}, owner:{self.item.owner_name} ({self.status})"
+        return f"{self.item.brand}, SN:{self.item.serial_number}, owner:{self.item.owner_name} ({self.status})"

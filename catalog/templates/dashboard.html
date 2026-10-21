@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Repair café dashboard</title>
+</head>
+<body>
+    <main class="container py-4">
+        <h1>Repair café dashboard</h1>
+        <p class="text-body-secondary">Live overview of tickets, customers and items.</p>
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-5 g-3 my-4">
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title fs-6 text-uppercase text-body-secondary">Waiting</h2>
+                        <p class="display-6 mb-0">{{ waiting }}</p>
+                        <p class="card-text small text-body-secondary">
+                            {{ received }} received · {{ in_progress }} in repair
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title fs-6 text-uppercase text-body-secondary">Repaired</h2>
+                        <p class="display-6 mb-0">{{ fixed }}</p>
+                        <p class="card-text small text-body-secondary">{{ unfixable }} unfixable</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title fs-6 text-uppercase text-body-secondary">Success rate</h2>
+                        <p class="display-6 mb-0">{{ success_rate }}%</p>
+                        <p class="card-text small text-body-secondary">fixed ÷ closed tickets</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title fs-6 text-uppercase text-body-secondary">Customers</h2>
+                        <p class="display-6 mb-0">{{ customers_count }}</p>
+                        <p class="card-text small text-body-secondary">distinct owners</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title fs-6 text-uppercase text-body-secondary">Items</h2>
+                        <p class="display-6 mb-0">{{ items_count }}</p>
+                        <p class="card-text small text-body-secondary">in the catalogue</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <h2 class="card-title h4">Check a repair ticket</h2>
+                <form class="row g-2 align-items-end" method="get" action="{% url 'repairs:lookup' %}">
+                    <div class="col-md-8">
+                        <label class="form-label" for="ticket-code">Repair ticket code</label>
+                        <input type="text" class="form-control" id="ticket-code" name="code"
+                               placeholder="Paste the ticket code" required>
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary">Check status</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </main>
+</body>
+</html>

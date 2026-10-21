@@ -19,9 +19,13 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+from repair_cafe_shop.views import dashboard_view
+
 urlpatterns = [
+    path('', dashboard_view, name='dashboard'),
     path('admin/', admin.site.urls),
     path('catalog/', include('catalog.urls')),
+    path('repair/', include('repairs.urls')),
 ]
 
 if settings.DEBUG:

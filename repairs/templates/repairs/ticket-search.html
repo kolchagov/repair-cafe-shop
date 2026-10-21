@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Find a repair ticket</title>
+</head>
+<body>
+    <main class="container py-4">
+        <h1>Find a repair ticket</h1>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                <form class="row g-2 align-items-end" method="get">
+                    <div class="col-md-8">
+                        <label class="form-label" for="{{ form.code.id_for_label }}">
+                            {{ form.code.label }}
+                        </label>
+                        {{ form.code }}
+                        {% if form.code.errors %}
+                            <div class="invalid-feedback d-block">{{ form.code.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary">Check status</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <a href="{% url 'dashboard' %}" class="btn btn-link px-0">Back to dashboard</a>
+    </main>
+</body>
+</html>

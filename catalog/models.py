@@ -51,6 +51,7 @@ class Item(models.Model):
             )
         ]
     )
+    # optional
     photo = models.ImageField(
         upload_to='images/',
         blank=True,

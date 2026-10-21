@@ -1,5 +1,7 @@
 from django import forms
-from django.forms import Form
+from django.forms import Form, ModelForm
+
+from repairs.models import RepairTicket
 
 
 class BootstrapForm(Form):
@@ -14,3 +16,8 @@ class BootstrapForm(Form):
             else:
                 css = 'form-control'
             field.widget.attrs.setdefault('class', css)
+
+class RepairTicketForm(BootstrapForm, ModelForm):
+    class Meta:
+        model = RepairTicket
+        fields = '__all__'

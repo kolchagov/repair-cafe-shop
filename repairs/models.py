@@ -37,7 +37,10 @@ class RepairTicket(models.Model):
         to=Repairer,
     )
 
-    diagnosis = models.TextField()
+    diagnosis = models.TextField(
+        null=True,
+        blank=True,
+    )
 
     spare_parts_cost = models.DecimalField(
         max_digits=10,
@@ -45,6 +48,8 @@ class RepairTicket(models.Model):
         validators=[
             MinValueValidator(0)
         ],
+        null=True,
+        blank=True,
     )
 
     intake_date = models.DateField(

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ repairer.name }} — repairer</title>
+</head>
+<body>
+    <main class="container py-4">
+        <h1>{{ repairer.name }}</h1>
+
+        <div class="card mb-4">
+            <div class="card-body">
+                {{ form }}
+            </div>
+        </div>
+
+        <a href="{% url 'volunteers:edit' repairer.pk %}" class="btn btn-primary">Edit</a>
+        <a href="{% url 'volunteers:list' %}" class="btn btn-secondary">Back</a>
+    </main>
+</body>
+</html>

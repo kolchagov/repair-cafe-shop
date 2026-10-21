@@ -1,0 +1,9 @@
+<h2>Delete repairer</h2>
+<form action="{% url 'volunteers:delete' repairer.pk %}" method="post">
+    {% csrf_token %}
+    <h3>{{ repairer.name }}</h3>
+    <p>{{ repairer.phone }} · {{ repairer.get_skills_display }}</p>
+    <div class="alert alert-danger">Warning: this action cannot be undone!</div>
+    <button type="submit" class="btn btn-danger">Confirm delete</button>
+    <a href="{% url 'volunteers:list' %}" class="btn btn-secondary">Cancel</a>
+</form>

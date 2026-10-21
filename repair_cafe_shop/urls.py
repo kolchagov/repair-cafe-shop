@@ -21,11 +21,14 @@ from django.urls import path, include
 
 from repair_cafe_shop.views import dashboard_view
 
+app_name = 'repair_cafe_shop'
+
 urlpatterns = [
     path('', dashboard_view, name='dashboard'),
     path('admin/', admin.site.urls),
     path('catalog/', include('catalog.urls')),
     path('repair/', include('repairs.urls')),
+    path('volunteers/', include('volunteers.urls')),
 ]
 
 if settings.DEBUG:

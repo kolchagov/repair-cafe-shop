@@ -16,8 +16,3 @@ class BootstrapForm(Form):
             else:
                 css = 'form-control'
             field.widget.attrs.setdefault('class', css)
-
-class RepairTicketForm(BootstrapForm, ModelForm):
-    class Meta:
-        model = RepairTicket
-        fields = '__all__'

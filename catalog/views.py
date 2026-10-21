@@ -16,6 +16,7 @@ class CatalogItemDetailView(DetailView):
 class CatalogItemCreateView(CreateView):
     model = Item
     form_class = ItemForm
+    template_name = 'catalog/add-item.html'
 
 
 class CatalogItemUpdateView(UpdateView):

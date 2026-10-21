@@ -1,4 +1,4 @@
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import DetailView, ListView, CreateView, UpdateView, DeleteView
 
 from volunteers.forms import RepairerForm
@@ -29,6 +29,11 @@ class RepairerListView(ListView):
 
 class RepairerCreateView(CreateView):
     model = Repairer
+    template_name = 'volunteers/repairer-edit.html'
+    form_class = RepairerForm
+
+    def get_success_url(self):
+        return reverse('volunteers:list')
 
 
 class RepairerUpdateView(UpdateView):

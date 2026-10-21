@@ -9,7 +9,11 @@
     {% csrf_token %}
     {{ form }}
     <button type="submit" class="btn btn-primary">
-        Update
+        {% if object.id %}
+            Update
+        {% else %}
+            Add
+        {% endif %}
     </button>
     <a href="{% url 'volunteers:list' %}" class="btn btn-warning">
         Back

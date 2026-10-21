@@ -31,5 +31,9 @@ pip install -r requirements.txt
 ```shell
 pyhton manage.py migrate
 ```
+3. Load sample data (categories, items, repairers, tickets):
+```shell
+python manage.py loaddata sample_data
+```
 
 TODO: project requirements, credentials, environment variables

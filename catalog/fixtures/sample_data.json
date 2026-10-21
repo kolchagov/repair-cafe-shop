@@ -1,0 +1,208 @@
+[
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "name": "Espresso machines",
+      "description": "Pump and lever espresso machines, domestic and prosumer."
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "name": "Coffee grinders",
+      "description": "Burr and blade grinders for espresso, filter and brew methods."
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+      "name": "Filter coffee makers",
+      "description": "Drip, pour-over and batch brewers with or without a hot plate."
+    }
+  },
+  {
+    "model": "catalog.item",
+    "pk": 1,
+    "fields": {
+      "owner_name": "Maria Lindqvist",
+      "category": 1,
+      "brand": "Gaggia Classic",
+      "serial_number": "GAG-2019-4471",
+      "problem_description": "Pump runs but no water comes out of the group head.",
+      "photo": "images/OIP-1254408834.jpg"
+    }
+  },
+  {
+    "model": "catalog.item",
+    "pk": 2,
+    "fields": {
+      "owner_name": "Tomas Berg",
+      "category": 1,
+      "brand": "Rancilio Silvia",
+      "serial_number": "RAN-88213",
+      "problem_description": "Steam wand leaks at the joint and the boiler hisses when heating.",
+      "photo": null
+    }
+  },
+  {
+    "model": "catalog.item",
+    "pk": 3,
+    "fields": {
+      "owner_name": "Aisha Rahman",
+      "category": 2,
+      "brand": "Baratza Encore",
+      "serial_number": "BAR-33017",
+      "problem_description": "Grinder makes a loud rattling noise and the grind setting drifts.",
+      "photo": null
+    }
+  },
+  {
+    "model": "catalog.item",
+    "pk": 4,
+    "fields": {
+      "owner_name": "Jonas Weber",
+      "category": 2,
+      "brand": "Eureka Mignon",
+      "serial_number": "EUR-5512",
+      "problem_description": "Motor does not start unless the hopper is pressed down hard.",
+      "photo": null
+    }
+  },
+  {
+    "model": "catalog.item",
+    "pk": 5,
+    "fields": {
+      "owner_name": "Nina Koskinen",
+      "category": 3,
+      "brand": "Moccamaster KBG",
+      "serial_number": "MOC-77409",
+      "problem_description": "Hot plate stays cold and the brew cycle stops after one cup.",
+      "photo": null
+    }
+  },
+  {
+    "model": "catalog.item",
+    "pk": 6,
+    "fields": {
+      "owner_name": "Peter Sanchez",
+      "category": 3,
+      "brand": "Hario V60",
+      "serial_number": "HAR-0091",
+      "problem_description": "Ceramic cone has a hairline crack and leaks into the server slowly.",
+      "photo": null
+    }
+  },
+  {
+    "model": "volunteers.repairer",
+    "pk": 1,
+    "fields": {
+      "name": "Lars Henriksson",
+      "skills": "MECHANIC",
+      "phone": "+358401234567",
+      "email": "lars.henriksson@example.org",
+      "notes": "Prefers espresso machines, has pressure gauge."
+    }
+  },
+  {
+    "model": "volunteers.repairer",
+    "pk": 2,
+    "fields": {
+      "name": "Elena Petrova",
+      "skills": "ELECTRIC",
+      "phone": "0509988776",
+      "email": "elena.petrova@example.org",
+      "notes": "Electronics background, keeps a spare multimeter."
+    }
+  },
+  {
+    "model": "volunteers.repairer",
+    "pk": 3,
+    "fields": {
+      "name": "Samuel Okonkwo",
+      "skills": "CLEANING",
+      "phone": "+358449876543",
+      "email": null,
+      "notes": "Descaler, burr brushes and food-safe lubricant in the locker."
+    }
+  },
+  {
+    "model": "volunteers.repairer",
+    "pk": 4,
+    "fields": {
+      "name": "Ritva Manninen",
+      "skills": "MAINTENANCE",
+      "phone": "0412233445",
+      "email": "ritva.manninen@example.org",
+      "notes": "Handles spare parts orders and keeps the log up to date."
+    }
+  },
+  {
+    "model": "repairs.repairticket",
+    "pk": 1,
+    "fields": {
+      "code": "3f2b6c1e-8a4d-4c9b-9e21-1a7d5c0b8e11",
+      "item": 1,
+      "status": "in-progress",
+      "repairers": [
+        1,
+        2
+      ],
+      "diagnosis": "Ulka pump checked, likely OPV spring stuck. Ordered a rebuild kit.",
+      "spare_parts_cost": "18.50",
+      "intake_date": "2026-10-08",
+      "updated_at": "2026-10-09T08:20:00Z"
+    }
+  },
+  {
+    "model": "repairs.repairticket",
+    "pk": 2,
+    "fields": {
+      "code": "a91c4d77-2e35-4b81-b0c6-5d9f3e7a2c44",
+      "item": 3,
+      "status": "fixed",
+      "repairers": [
+        1
+      ],
+      "diagnosis": "Replaced worn outer burr and reseated the adjustment ring.",
+      "spare_parts_cost": "42.00",
+      "intake_date": "2026-09-27",
+      "updated_at": "2026-10-02T15:45:00Z"
+    }
+  },
+  {
+    "model": "repairs.repairticket",
+    "pk": 3,
+    "fields": {
+      "code": "c05e8b22-7f19-4d6a-8b34-9e2c1f6d5a03",
+      "item": 5,
+      "status": "received",
+      "repairers": [
+        2,
+        4
+      ],
+      "diagnosis": "Awaiting bench test; suspect thermal fuse on the hot plate circuit.",
+      "spare_parts_cost": "0.00",
+      "intake_date": "2026-10-19",
+      "updated_at": "2026-10-19T11:05:00Z"
+    }
+  },
+  {
+    "model": "repairs.repairticket",
+    "pk": 4,
+    "fields": {
+      "code": "e174a3f0-56c2-4a9d-93b8-70d4c2e1b6f9",
+      "item": 6,
+      "status": "unfixable",
+      "repairers": [
+        3
+      ],
+      "diagnosis": "Crack runs through the cone wall, not repairable safely. Owner notified.",
+      "spare_parts_cost": "0.00",
+      "intake_date": "2026-10-11",
+      "updated_at": "2026-10-12T17:30:00Z"
+    }
+  }
+]

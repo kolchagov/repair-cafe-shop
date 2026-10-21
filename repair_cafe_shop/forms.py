@@ -3,7 +3,7 @@ from django.forms import Form
 
 
 class BootstrapForm(Form):
-    """Adds Bootstrap classes to every widget on a form."""
+    """Mixin BSForm: Adds Bootstrap classes to every widget on a form."""
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

@@ -9,7 +9,11 @@
     {% if item_list %}
         <ul>
             {% for item in item_list %}
-                <li>{{ item.brand }} ({{ item.category.name }}) — {{ item.problem_description }} Owner: {{ item.owner_name }}</li>
+                <li>
+                    <a href="{% url 'catalog:details' pk=item.id %}">
+                        {{ item.brand }} ({{ item.category.name }}) — {{ item.problem_description }} Owner: {{ item.owner_name }}
+                    </a>
+                </li>
             {% endfor %}
         </ul>
     {% else %}

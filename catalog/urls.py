@@ -1,7 +1,13 @@
-from django.urls import path
+from django.urls import path, include
 
-from catalog.views import ModelListView
+from catalog.views import CatalogItemListView, CatalogItemDetailView, CatalogItemUpdateView, CatalogDeleteView
 
+app_name = 'catalog'
 urlpatterns = [
-    path('', ModelListView.as_view(), name='items-list'),
+    path('', CatalogItemListView.as_view(), name='list'),
+    path('<int:pk>/', include([
+        path('details', CatalogItemDetailView.as_view(), name='details'),
+        path('edit', CatalogItemUpdateView.as_view(), name='edit'),
+        path('delete', CatalogDeleteView.as_view(), name='delete'),
+    ])),
 ]

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ item.brand }} — repair item</title>
+</head>
+<body>
+    <h1>{{ item.brand }}</h1>
+    <div>
+        <h2>Owner</h2>
+        <p>{{ item.owner_name }}</p>
+        <h2>Category</h2>
+        <p>{{ item.category.name }}</p>
+        <h2>Problem</h2>
+        <p>{{ item.problem_description }}</p>
+    </div>
+    {% if item.photo %}
+        <img src="{{ item.photo.url }}" alt="{{ item.brand }}">
+    {% endif %}
+    <p>
+        <a class="btn btn-primary" href="{% url 'catalog:edit' item.pk %}">Edit</a>
+        <a class="btn btn-danger" href="{% url 'catalog:delete' item.pk %}">Delete</a>
+        <a href="{% url 'catalog:list' %}">Back</a>
+    </p>
+</body>
+</html>

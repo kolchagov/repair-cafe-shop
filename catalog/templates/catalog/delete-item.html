@@ -1,0 +1,15 @@
+<form action="{% url 'catalog:delete' item.id %}" method="post">
+    {% csrf_token %}
+    <h2>{{ item.brand }}</h2>
+    <h3>{{ item.category }}</h3>
+    <p>{{ item.owner_name }}</p>
+    <p>{{ item.problem_description  }}</p>
+    <div class="card">
+        <div class="card body bg-alert">
+            <h3>Warning: this action cannot be undone!</h3>
+        </div>
+    </div>
+    <button type="submit">
+        Confirm delete
+    </button>
+</form>

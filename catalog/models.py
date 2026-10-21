@@ -1,5 +1,6 @@
-from django.core.validators import RegexValidator
+from django.core.validators import RegexValidator, MinLengthValidator
 from django.db import models
+from django.urls import reverse
 
 
 class Category(models.Model):
@@ -34,10 +35,18 @@ class Item(models.Model):
     brand = models.CharField(
         max_length=100,
     )
+
+    serial_number = models.TextField(
+        max_length=30,
+        validators=[
+            MinLengthValidator(3, "Serial number is required, minimum 3 chars"),
+        ]
+    )
+
     problem_description = models.TextField(
         validators=[
             RegexValidator(
-                regex='^\w+(?: \w+){3,}$',
+                regex=r'^\W*(?:\w+\W+){3,}\w+\W*$',
                 message='Give meaningful problem description. At least four words required.',
             )
         ]
@@ -50,3 +59,6 @@ class Item(models.Model):
 
     def __str__(self):
         return f"{self.owner_name}, {self.brand} {self.category}: {self.problem_description})"
+
+    def get_absolute_url(self):
+        return reverse('catalog:details', args=[str(self.pk)])

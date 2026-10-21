@@ -1,0 +1,11 @@
+<h2>Edit item</h2>
+<form method="post" enctype="multipart/form-data">
+    {{ form }}
+    {% csrf_token %}
+    <button type="submit">
+        Update
+    </button>
+    <a href="{% url 'catalog:details' item.id %}" class="btn btn-warning">
+        Back
+    </a>
+</form>

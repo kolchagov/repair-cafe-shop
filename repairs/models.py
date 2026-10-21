@@ -28,10 +28,6 @@ class RepairTicket(models.Model):
         related_name='repair_tickets',
     )
 
-    serial_number = models.TextField(
-        max_length=30,
-    )
-
     status = models.TextField(
         choices=StatusChoices.choices,
         default=StatusChoices.RECEIVED,

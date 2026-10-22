@@ -1,15 +1,20 @@
-<form action="{% url 'catalog:delete' item.id %}" method="post">
-    {% csrf_token %}
-    <h2>{{ item.brand }}</h2>
-    <h3>{{ item.category }}</h3>
-    <p>{{ item.owner_name }}</p>
-    <p>{{ item.problem_description  }}</p>
-    <div class="card">
-        <div class="card body bg-alert">
-            <h3>Warning: this action cannot be undone!</h3>
-        </div>
-    </div>
-    <button type="submit">
-        Confirm delete
-    </button>
-</form>
+{% extends 'index.html' %}
+
+{% block title %}Delete {{ item.brand }}{% endblock %}
+
+{% block content %}
+    <main class="container py-4">
+        <form action="{% url 'catalog:delete' item.id %}" method="post">
+            {% csrf_token %}
+            <h2>{{ item.brand }}</h2>
+            <h3>{{ item.category }}</h3>
+            <p>{{ item.owner_name }}</p>
+            <p>{{ item.problem_description }}</p>
+            <div class="alert alert-danger">Warning: this action cannot be undone!</div>
+            <button type="submit" class="btn btn-danger">
+                Confirm delete
+            </button>
+            <a href="{% url 'catalog:details' item.id %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </main>
+{% endblock %}

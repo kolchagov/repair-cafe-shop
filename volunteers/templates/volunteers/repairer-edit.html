@@ -1,23 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Repairer edit</title>
-</head>
-<body>
-<form method="post">
-    {% csrf_token %}
-    {{ form }}
-    <button type="submit" class="btn btn-primary">
-        {% if object.id %}
-            Update
-        {% else %}
-            Add
-        {% endif %}
-    </button>
-    <a href="{% url 'volunteers:list' %}" class="btn btn-warning">
-        Back
-    </a>
-</form>
-</body>
-</html>
+{% extends 'index.html' %}
+
+{% block title %}{% if object %}Edit repairer{% else %}Add repairer{% endif %}{% endblock %}
+
+{% block content %}
+    <main class="container py-4">
+        <h2>{% if object %}Edit repairer{% else %}Add repairer{% endif %}</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form }}
+            <button type="submit" class="btn btn-primary">
+                {% if object.id %}
+                    Update
+                {% else %}
+                    Add
+                {% endif %}
+            </button>
+            <a href="{% url 'volunteers:list' %}" class="btn btn-warning">
+                Back
+            </a>
+        </form>
+    </main>
+{% endblock %}

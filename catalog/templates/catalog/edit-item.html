@@ -1,11 +1,19 @@
-<h2>Edit item</h2>
-<form method="post" enctype="multipart/form-data">
-    {{ form }}
-    {% csrf_token %}
-    <button type="submit">
-        Update
-    </button>
-    <a href="{% url 'catalog:details' item.id %}" class="btn btn-warning">
-        Back
-    </a>
-</form>
+{% extends 'index.html' %}
+
+{% block title %}Edit item{% endblock %}
+
+{% block content %}
+    <main class="container py-4">
+        <h2>Edit item</h2>
+        <form method="post" enctype="multipart/form-data">
+            {{ form }}
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">
+                Update
+            </button>
+            <a href="{% url 'catalog:details' item.id %}" class="btn btn-warning">
+                Back
+            </a>
+        </form>
+    </main>
+{% endblock %}

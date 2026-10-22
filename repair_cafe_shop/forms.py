@@ -1,11 +1,11 @@
 from django import forms
-from django.forms import Form, ModelForm
-
-from repairs.models import RepairTicket
+from django.forms import Form
 
 
 class BootstrapForm(Form):
-    """Mixin BSForm: Adds Bootstrap classes to every widget on a form."""
+    """Mixin BSForm: Adds Bootstrap classes and styling to every widget on a form."""
+
+    template_name = 'bs5/form.html'
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -16,3 +16,7 @@ class BootstrapForm(Form):
             else:
                 css = 'form-control'
             field.widget.attrs.setdefault('class', css)
+        for name in self.errors:
+            if name in self.fields:
+                widget = self.fields[name].widget
+                widget.attrs['class'] += ' is-invalid'

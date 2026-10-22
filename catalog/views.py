@@ -3,6 +3,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 
 from catalog.forms import ItemForm
 from catalog.models import Item
+from repairs.models import RepairTicket, StatusChoices
 
 
 class CatalogItemListView(ListView):
@@ -11,6 +12,13 @@ class CatalogItemListView(ListView):
 
 class CatalogItemDetailView(DetailView):
     model = Item
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['open_ticket'] = self.object.repair_tickets.filter(
+            status__in=(StatusChoices.RECEIVED, StatusChoices.IN_PROGRESS)
+        ).order_by('-updated_at').first()
+        return context
 
 
 class CatalogItemCreateView(CreateView):

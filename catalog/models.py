@@ -59,7 +59,7 @@ class Item(models.Model):
     )
 
     def __str__(self):
-        return f"{self.owner_name}, {self.brand} {self.category}: {self.problem_description})"
+        return f"{self.owner_name}, {self.brand} - {self.category}"
 
     def get_absolute_url(self):
         return reverse('catalog:details', args=[str(self.pk)])

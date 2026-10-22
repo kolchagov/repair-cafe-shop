@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.forms',
 ] + PROJECT_APPS
 
 MIDDLEWARE = [
@@ -60,8 +61,7 @@ ROOT_URLCONF = 'repair_cafe_shop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -74,6 +74,9 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'repair_cafe_shop.wsgi.application'
+
+# Forms render with the project template dirs (templates/bs5/form.html).
+FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
 
 
 # Database

@@ -1,0 +1,25 @@
+{% extends 'index.html' %}
+
+{% block title %}Repair ticket - repair progress{% endblock %}
+
+{% block content %}
+    <main class="container py-4">
+        <h1 class="h3 mb-4">Repair ticket details</h1>
+        <form method="post" class="card">
+            <div class="card-body">
+                {% if item %}
+                    <div class="mb-3">
+                        <div class="form-label mb-1">User's problem description</div>
+                        <div class="border rounded p-3 bg-body-tertiary">{{ item.problem_description }}</div>
+                    </div>
+                {% endif %}
+                {{ form }}
+            </div>
+            <div class="card-footer d-flex gap-2">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Save ticket</button>
+                <button type="button" onclick="history.go(-1)" class="btn btn-outline-secondary">Back</button>
+            </div>
+        </form>
+    </main>
+{% endblock %}

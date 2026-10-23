@@ -15,6 +15,17 @@ class CategoryForm(BootstrapForm, forms.ModelForm):
         help_texts = {
             'name': 'A short, unique name, e.g. "Coffee machines".',
             'description': 'What kinds of items belong in this category?',
+        },
+        widgets = {
+            'name': forms.TextInput(
+                attrs={'placeholder': 'e.g. Coffee Machines'}
+            ),
+            'description': forms.Textarea(
+                attrs={
+                    'rows': 2,
+                    'placeholder': 'Describe the category.',
+                }
+            )
         }
         error_messages = {
             'name': {

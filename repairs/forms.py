@@ -32,7 +32,10 @@ class RepairTicketForm(BootstrapForm, forms.ModelForm):
                 attrs={'type': 'date'},
             ),
             'diagnosis': forms.Textarea(
-                attrs={'placeholder': 'Found problems description'}
+                attrs={
+                    'placeholder': 'Found problems description',
+                    'rows': 2,
+                }
             ),
         }
         error_messages = {

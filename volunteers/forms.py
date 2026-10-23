@@ -27,7 +27,7 @@ class RepairerForm(BootstrapForm, forms.ModelForm):
                 attrs={'placeholder': '0881234567'}
             ),
             'notes': forms.Textarea(
-                attrs={'rows': 3, 'placeholder': 'Optional'}
+                attrs={'rows': 2, 'placeholder': 'Optional'}
             ),
             'email': forms.EmailInput(
                 attrs={'placeholder': 'user@domain.com, optional'}

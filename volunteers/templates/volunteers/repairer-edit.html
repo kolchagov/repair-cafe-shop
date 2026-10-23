@@ -8,16 +8,18 @@
         <form method="post">
             {% csrf_token %}
             {{ form }}
-            <button type="submit" class="btn btn-primary">
-                {% if object.id %}
-                    Update
-                {% else %}
-                    Add
-                {% endif %}
-            </button>
-            <a href="{% url 'volunteers:list' %}" class="btn btn-secondary">
-                Back
-            </a>
+            <div class="d-flex justify-content-end gap-2">
+                <button type="submit" class="btn btn-primary">
+                    {% if object.id %}
+                        Update
+                    {% else %}
+                        Add
+                    {% endif %}
+                </button>
+                <a href="{% url 'volunteers:list' %}" class="btn btn-secondary">
+                    Back
+                </a>
+            </div>
         </form>
     </main>
 {% endblock %}

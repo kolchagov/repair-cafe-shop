@@ -11,10 +11,12 @@
             <p>{{ item.owner_name }}</p>
             <p>{{ item.problem_description }}</p>
             <div class="alert alert-danger">Warning: this action cannot be undone!</div>
-            <button type="submit" class="btn btn-danger">
-                Confirm delete
-            </button>
-            <a href="{% url 'catalog:details' item.id %}" class="btn btn-secondary">Back</a>
+            <div class="d-flex justify-content-end gap-2">
+                <button type="submit" class="btn btn-danger">
+                    Confirm delete
+                </button>
+                <a href="{% url 'catalog:details' item.id %}" class="btn btn-secondary">Back</a>
+            </div>
         </form>
     </main>
 {% endblock %}

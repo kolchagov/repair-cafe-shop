@@ -31,18 +31,20 @@
                 </dl>
             </div>
         </div>
-        {% if ticket.status == 'received' or ticket.status == 'in-progress' %}
-            <a href="{% url 'repairs:begin-repair' ticket.code %}" class="btn btn-primary">
-                To repair
-            </a>
-        {% elif ticket.status == 'fixed' or ticket.status == 'unfixable' %}
-            <a type="button" href="{% url 'repairs:finished-tickets' %}" class="btn btn-secondary">
-                Back
-            </a>
-        {% else %}
-            <span onclick="history.go(-1)" class="btn btn-secondary">
-                Back
-            </span>
-        {% endif %}
+        <div class="d-flex justify-content-end">
+            {% if ticket.status == 'received' or ticket.status == 'in-progress' %}
+                <a href="{% url 'repairs:begin-repair' ticket.code %}" class="btn btn-primary">
+                    To repair
+                </a>
+            {% elif ticket.status == 'fixed' or ticket.status == 'unfixable' %}
+                <a href="{% url 'repairs:finished-tickets' %}" class="btn btn-secondary">
+                    Back
+                </a>
+            {% else %}
+                <span onclick="history.go(-1)" class="btn btn-secondary">
+                    Back
+                </span>
+            {% endif %}
+        </div>
     </main>
 {% endblock %}

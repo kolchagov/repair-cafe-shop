@@ -19,7 +19,7 @@
             {% if item.photo %}
                 <img src="{{ item.photo.url }}" alt="{{ item.brand }}">
             {% endif %}
-            <p>
+            <p class="d-flex justify-content-end gap-2">
                 <a class="btn btn-primary" href="{% url 'catalog:edit' item.pk %}">Edit</a>
                 {#            {% if open_ticket %}#}
                 {#                <a class="btn btn-success" href="{% url 'repairs:details' open_ticket.code %}">Continue repair</a>#}

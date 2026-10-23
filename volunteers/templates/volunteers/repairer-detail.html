@@ -12,7 +12,9 @@
             </div>
         </div>
 
-        <a href="{% url 'volunteers:edit' repairer.pk %}" class="btn btn-primary">Edit</a>
-        <a href="{% url 'volunteers:list' %}" class="btn btn-secondary">Back</a>
+        <div class="d-flex justify-content-end gap-2">
+            <a href="{% url 'volunteers:edit' repairer.pk %}" class="btn btn-primary">Edit</a>
+            <a href="{% url 'volunteers:list' %}" class="btn btn-secondary">Back</a>
+        </div>
     </main>
 {% endblock %}

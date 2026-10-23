@@ -15,7 +15,7 @@
                 {% endif %}
                 {{ form }}
             </div>
-            <div class="card-footer d-flex gap-2">
+            <div class="card-footer d-flex justify-content-end gap-2">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-primary">Save ticket</button>
                 <button type="button" onclick="history.go(-1)" class="btn btn-secondary">Back</button>

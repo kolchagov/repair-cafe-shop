@@ -36,7 +36,7 @@ It needs no user accounts: owners and repairers are represented as ordinary doma
 ## Setup and configuration
 
 ```shell
-git clone <your-public-repo-url>
+git clone https://github.com/kolchagov/repair-cafe-shop.git
 cd repair-cafe-shop
 python -m venv .venv
 source .venv/bin/activate  # Windows: .venv\Scripts\activate
@@ -45,8 +45,10 @@ python manage.py migrate
 python manage.py runserver
 ````
 
-Open http://127.0.0.1:8000/. No fixtures, no custom migrations,
-no admin panel needed. Works with an empty database.
+Open http://127.0.0.1:8000/. No custom migrations, no admin panel needed.
+Works with an empty database — every object is created through the UI.
+`catalog/fixtures/sample_data.json` is optional local sample data and is never
+loaded automatically; you can delete it safely.
 
 ## Environment variables and credentials
 
@@ -98,7 +100,8 @@ catalog/        Category (list/add/edit/delete), Item (list/detail/add/edit/dele
 volunteers/     Repairer (list/detail-readonly/edit/delete)
 repairs/        RepairTicket (lookup, pending/in-progress/finished lists, detail, create/edit)
 templates/      index.html (base), navbar.html, footer.html, paginator.html, 404.html, bs5/form.html
-repair_cafe_shop/  settings, urls (incl. handler404), dashboard view
+repairs/templatetags/  custom `status_badge` filter
+repair_cafe_shop/  settings, urls (media serving, dashboard view)
 static/         Bootstrap CSS/JS + logo
 Models:         Category ←(FK) Item ←(FK) RepairTicket ↔(M2M) Repairer.
 Forms (5):      CategoryForm, ItemForm, RepairerForm, RepairTicketForm, TicketSearchForm 

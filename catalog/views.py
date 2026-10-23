@@ -1,5 +1,3 @@
-from unicodedata import category
-
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
@@ -33,12 +31,8 @@ class CatalogItemCreateView(CreateView):
 
     def get_success_url(self):
         # create new repair ticket when new item is added
-        repair_ticket = RepairTicket()
-        repair_ticket.item = self.object
-        repair_ticket.status = StatusChoices.RECEIVED
-        repair_ticket.save()
-        code = repair_ticket.code
-        return reverse('catalog:details', kwargs={'pk': repair_ticket.id})
+        RepairTicket.objects.create(item=self.object, status=StatusChoices.RECEIVED)
+        return reverse('catalog:details', kwargs={'pk': self.object.pk})
 
 
 class CatalogItemUpdateView(UpdateView):

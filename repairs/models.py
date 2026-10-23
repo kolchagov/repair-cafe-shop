@@ -65,3 +65,6 @@ class RepairTicket(models.Model):
 
     def __str__(self):
         return f"{self.item.brand}, SN:{self.item.serial_number}, owner:{self.item.owner_name} ({self.status})"
+
+    class Meta:
+        ordering = ['intake_date']

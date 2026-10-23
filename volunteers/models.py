@@ -46,3 +46,6 @@ class Repairer(models.Model):
     def __str__(self):
         skills = self.skills.split(",")
         return f"{self.name}, {self.phone} ({skills})"
+
+    class Meta:
+        ordering = ['name']

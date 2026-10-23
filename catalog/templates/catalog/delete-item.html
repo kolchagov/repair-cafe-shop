@@ -3,7 +3,7 @@
 {% block title %}Delete {{ item.brand }}{% endblock %}
 
 {% block content %}
-    <main class="container py-4">
+    <main class="py-4">
         <form action="{% url 'catalog:delete' item.id %}" method="post">
             {% csrf_token %}
             <h2>{{ item.brand }}</h2>

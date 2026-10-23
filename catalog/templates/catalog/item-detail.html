@@ -3,30 +3,34 @@
 {% block title %}{{ item.brand }} — repair item{% endblock %}
 
 {% block content %}
-    <main class="container py-4">
-        <h2>{{ item.brand }}, SN:{{ item.serial_number }}</h2>
-        <div>
-            <h3>Owner</h3>
-            <p>{{ item.owner_name }}</p>
-            <h3>Category</h3>
-            <p>{{ item.category.name }}</p>
-            <h3>Problem</h3>
-            <p>{{ item.problem_description }}</p>
+    <section class="card">
+        <div class="card-body">
+            <div class="card-title">
+                <h2>{{ item.brand }}, SN:{{ item.serial_number }}</h2>
+            </div>
+            <div>
+                <h3>Owner</h3>
+                <p>{{ item.owner_name }}</p>
+                <h3>Category</h3>
+                <p>{{ item.category.name }}</p>
+                <h3>Problem</h3>
+                <p>{{ item.problem_description }}</p>
+            </div>
+            {% if item.photo %}
+                <img src="{{ item.photo.url }}" alt="{{ item.brand }}">
+            {% endif %}
+            <p>
+                <a class="btn btn-primary" href="{% url 'catalog:edit' item.pk %}">Edit</a>
+                {#            {% if open_ticket %}#}
+                {#                <a class="btn btn-success" href="{% url 'repairs:details' open_ticket.code %}">Continue repair</a>#}
+                {#            {% else %}#}
+                {#                <a class="btn btn-success" href="{% url 'repairs:edit' %}?item={{ item.pk }}">Begin repair</a>#}
+                {#            {% endif %}#}
+                <a class="btn btn-danger" href="{% url 'catalog:delete' item.pk %}">Delete</a>
+                <a href="{% url 'dashboard' %}" class="btn btn-secondary">
+                    Back
+                </a>
+            </p>
         </div>
-        {% if item.photo %}
-            <img src="{{ item.photo.url }}" alt="{{ item.brand }}">
-        {% endif %}
-        <p>
-            <a class="btn btn-primary" href="{% url 'catalog:edit' item.pk %}">Edit</a>
-{#            {% if open_ticket %}#}
-{#                <a class="btn btn-success" href="{% url 'repairs:details' open_ticket.code %}">Continue repair</a>#}
-{#            {% else %}#}
-{#                <a class="btn btn-success" href="{% url 'repairs:edit' %}?item={{ item.pk }}">Begin repair</a>#}
-{#            {% endif %}#}
-            <a class="btn btn-danger" href="{% url 'catalog:delete' item.pk %}">Delete</a>
-            <a href="{% url 'dashboard' %}" class="btn btn-secondary">
-                Back
-            </a>
-        </p>
-    </main>
+    </section>
 {% endblock %}

@@ -3,7 +3,7 @@
 {% block title %}{% if object %}Edit repairer{% else %}Add repairer{% endif %}{% endblock %}
 
 {% block content %}
-    <main class="container py-4">
+    <main class="py-4">
         <h2>{% if object %}Edit repairer{% else %}Add repairer{% endif %}</h2>
         <form method="post">
             {% csrf_token %}

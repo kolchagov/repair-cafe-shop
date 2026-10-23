@@ -110,5 +110,11 @@ Forms (5):      CategoryForm, ItemForm, RepairerForm, RepairTicketForm, TicketSe
 ```
 
 ## Custom 404 - Not found page
-The app has custom 404 page. To make it active, we should set DEBUG=False in settings.py
+The app has custom 404 page. To make it active, set `DEBUG=False` in settings.py and
+run the server with `--insecure` flag:
+```bash
+python manage.py runserver --insecure 
+```
+Without it, Django stops serving static files when DEBUG is off and protocol is http, 
+so the page would load unstyled.
 

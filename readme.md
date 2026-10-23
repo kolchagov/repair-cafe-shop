@@ -105,3 +105,7 @@ Forms (5):      CategoryForm, ItemForm, RepairerForm, RepairTicketForm, TicketSe
                 - custom labels, help texts, placeholders, error messages,
                   disabled read-only detail, code/updated_at excluded.
 ```
+
+## Custom 404 - Not found page
+The app has custom 404 page. To make it active, we should set DEBUG=False in settings.py
+

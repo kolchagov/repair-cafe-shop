@@ -40,6 +40,18 @@
                                         </span>
                                     </div>
                                 </div>
+                                {% if ticket.status == 'fixed' or ticket.status == 'unfixable' %}
+                                    <div class="row">
+                                        <div class="col">
+                                            {{ ticket.diagnosis|truncatechars:20 }}
+                                        </div>
+                                        <div class="col-auto">
+                                            Price: <span class="badge text-bg-secondary">
+                                            {{ ticket.spare_parts_cost|floatformat:2 }}
+                                        </span>
+                                        </div>
+                                    </div>
+                                {% endif %}
                                 <a href="{% url 'repairs:details' code=ticket.code %}"
                                    class="btn btn-sm btn-outline-primary">
                                     View ticket

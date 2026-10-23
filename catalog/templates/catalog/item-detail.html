@@ -18,13 +18,15 @@
         {% endif %}
         <p>
             <a class="btn btn-primary" href="{% url 'catalog:edit' item.pk %}">Edit</a>
-            {% if open_ticket %}
-                <a class="btn btn-success" href="{% url 'repairs:details' open_ticket.code %}">Continue repair</a>
-            {% else %}
-                <a class="btn btn-success" href="{% url 'repairs:edit' %}?item={{ item.pk }}">Begin repair</a>
-            {% endif %}
+{#            {% if open_ticket %}#}
+{#                <a class="btn btn-success" href="{% url 'repairs:details' open_ticket.code %}">Continue repair</a>#}
+{#            {% else %}#}
+{#                <a class="btn btn-success" href="{% url 'repairs:edit' %}?item={{ item.pk }}">Begin repair</a>#}
+{#            {% endif %}#}
             <a class="btn btn-danger" href="{% url 'catalog:delete' item.pk %}">Delete</a>
-            <a href="{% url 'catalog:list' %}" class="btn btn-warning">Back</a>
+            <a href="{% url 'dashboard' %}" class="btn btn-warning">
+                Back to dashboard
+            </a>
         </p>
     </main>
 {% endblock %}

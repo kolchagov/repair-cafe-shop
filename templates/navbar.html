@@ -14,7 +14,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'dashboard' %}">Dashboard</a>
+                    <a class="nav-link" aria-current="page" href="{% url 'dashboard' %}">Dashboard</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'repairs:lookup' %}">Check</a>
@@ -46,6 +46,24 @@
                     </ul>
                 </li>
             </ul>
+            {#moved to dashboard#}
+            {#            <div class="ms-auto">#}
+            {#                <a href="{% url 'catalog:add' %}" class="btn btn-outline-primary">#}
+            {#                    Add item for repair#}
+            {#                </a>#}
+            {#            </div>#}
         </div>
     </div>
+    <script>
+        (window.onload = () => {
+            // handle active path item with JS
+            const url = window.location.pathname;
+            const links = document.querySelectorAll('.nav-link:not(.dropdown-toggle), .dropdown-item');
+            links.forEach(link => {
+                if (new URL(link.href).pathname === url) {
+                    link.classList.add('active');
+                }
+            });
+        })()
+    </script>
 </nav>

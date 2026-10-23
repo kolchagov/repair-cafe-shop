@@ -15,11 +15,13 @@
             </div>
         </div>
         {% if item_list %}
-            <ul>
+            <ul class="list-group">
                 {% for item in item_list %}
-                    <li>
-                        <a href="{% url 'catalog:details' pk=item.id %}">
-                            {{ item.brand }} ({{ item.category.name }}) — {{ item.problem_description }} Owner: {{ item.owner_name }}
+                    <li class="list-group-item">
+                        <a href="{% url 'catalog:details' pk=item.id %}"
+                           class="text-secondary underline-offset-2 underline-20 hover:underline-100">
+                            {{ item.brand }} ({{ item.category.name }}) — {{ item.problem_description }}
+                            Owner: {{ item.owner_name }}
                         </a>
                     </li>
                 {% endfor %}

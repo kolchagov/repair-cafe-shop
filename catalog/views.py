@@ -8,10 +8,12 @@ from repairs.models import RepairTicket, StatusChoices
 
 class CatalogItemListView(ListView):
     model = Item
+    template_name = "catalog/item-list.html"
 
 
 class CatalogItemDetailView(DetailView):
     model = Item
+    template_name = "catalog/item-detail.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -25,6 +27,14 @@ class CatalogItemCreateView(CreateView):
     model = Item
     form_class = ItemForm
     template_name = 'catalog/add-item.html'
+
+    def get_success_url(self):
+        # create new repair ticket when new item is added
+        repair_ticket = RepairTicket()
+        repair_ticket.item = self.object
+        repair_ticket.status = StatusChoices.RECEIVED
+        repair_ticket.save()
+        return reverse_lazy('dashboard')
 
 
 class CatalogItemUpdateView(UpdateView):

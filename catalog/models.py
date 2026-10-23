@@ -26,6 +26,12 @@ class Item(models.Model):
     """
     owner_name = models.CharField(
         max_length=100,
+        validators=[
+            RegexValidator(
+                r'^\W*(?:\w+\W+)\w+\W*$',
+                message='At least two names required'
+            )
+        ]
     )
     category = models.ForeignKey(
         to='Category',

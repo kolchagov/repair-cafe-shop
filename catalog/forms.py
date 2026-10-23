@@ -26,10 +26,18 @@ class CategoryForm(BootstrapForm, forms.ModelForm):
             },
         }
 
+
 class ItemForm(BootstrapForm, forms.ModelForm):
     class Meta:
         model = Item
-        fields = ['owner_name', 'category', 'brand', 'problem_description', 'photo']
+        fields = [
+            'owner_name',
+            'category',
+            'brand',
+            'serial_number',
+            'problem_description',
+            'photo',
+        ]
         labels = {
             'owner_name': 'Owner',
             'brand': 'Brand / model',
@@ -41,12 +49,21 @@ class ItemForm(BootstrapForm, forms.ModelForm):
             'photo': 'Optional photo of the item.',
         }
         widgets = {
-            'owner_name': forms.TextInput(attrs={'placeholder': 'e.g. Jane Doe'}),
-            'brand': forms.TextInput(attrs={'placeholder': 'e.g. DeLonghi EC155'}),
-            'problem_description': forms.Textarea(attrs={
-                'rows': 4,
-                'placeholder': 'e.g. Pump makes a loud noise and no water comes out',
-            }),
+            'owner_name': forms.TextInput(
+                attrs={'placeholder': 'e.g. Jane Doe'}
+            ),
+            'brand': forms.TextInput(
+                attrs={'placeholder': 'e.g. DeLonghi EC155'}
+            ),
+            'serial_number': forms.TextInput(
+                attrs={'placeholder': 'SN123456'}
+            ),
+            'problem_description': forms.Textarea(
+                attrs={
+                    'rows': 4,
+                    'placeholder': 'e.g. Pump makes a loud noise and no water comes out',
+                }
+            ),
         }
         error_messages = {
             'owner_name': {'required': "Please enter the owner's name."},

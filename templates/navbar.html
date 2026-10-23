@@ -53,7 +53,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="volunteersDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Volunteers
+                        Settings
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="volunteersDropdown">
                         <li>
@@ -61,10 +61,22 @@
                                 Repairers list
                             </a>
                         </li>
-                        <li class="dropdown-divider"></li>
                         <li>
                             <a class='dropdown-item' href="{% url 'volunteers:add' %}">
                                 Add repairer
+                            </a>
+                        </li>
+                        <li >
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'catalog:category-list' %}">
+                                Categories
+                            </a>
+                        </li>
+                        <li>
+                            <a class='dropdown-item' href="{% url 'catalog:category-add' %}">
+                                Add category
                             </a>
                         </li>
                     </ul>

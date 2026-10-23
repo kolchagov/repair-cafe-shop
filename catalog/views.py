@@ -1,8 +1,10 @@
-from django.urls import reverse_lazy
+from unicodedata import category
+
+from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-from catalog.forms import ItemForm
-from catalog.models import Item
+from catalog.forms import ItemForm, CategoryForm
+from catalog.models import Item, Category
 from repairs.models import RepairTicket, StatusChoices
 
 
@@ -48,3 +50,30 @@ class CatalogDeleteView(DeleteView):
     template_name = 'catalog/delete-item.html'
 
     success_url = reverse_lazy('catalog:list')
+
+class CategoryListView(ListView):
+    model = Category
+    template_name = "catalog/category-list.html"
+    paginate_by = 3
+
+class CategoryCreateView(CreateView):
+    model = Category
+    form_class = CategoryForm
+    template_name = 'catalog/add-category.html'
+
+    def get_success_url(self):
+        return reverse('catalog:category-list')
+
+class CategoryDeleteView(DeleteView):
+    model = Category
+    template_name = 'catalog/delete-category.html'
+
+    success_url = reverse_lazy('catalog:category-list')
+
+class CategoryUpdateView(UpdateView):
+    model = Category
+    form_class = CategoryForm
+    template_name = 'catalog/edit-category.html'
+
+    def get_success_url(self):
+        return reverse('catalog:category-list')

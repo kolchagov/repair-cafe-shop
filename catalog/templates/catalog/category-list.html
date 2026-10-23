@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+
+{% block title %}Repair café categories{% endblock %}
+
+{% block content %}
+    <main class="container py-4">
+        <div class="row">
+            <div class="col">
+                <h1>Item categories</h1>
+            </div>
+            <div class="col-auto">
+                <a href="{% url 'catalog:category-add' %}" class="btn btn-primary">
+                    Add category
+                </a>
+            </div>
+        </div>
+        {% if category_list %}
+            <ul class="list-group">
+                {% for category in category_list %}
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col">
+                                {{ category.name }} ({{ category.description }})
+                            </div>
+                            <div class="col-auto">
+                                <a href="{% url 'catalog:category-edit' pk=category.id %}"
+                                   class="btn btn-sm btn-outline-success mx-2">
+                                    Edit
+                                </a>
+                                <a href="{% url 'catalog:category-delete' pk=category.id %}"
+                                   class="btn btn-sm btn-outline-danger">
+                                    Delete
+                                </a>
+
+                            </div>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+            <div class="text-end">
+                {% include 'paginator.html' %}
+            </div>
+        {% else %}
+            <p>No item categories have been submitted.</p>
+        {% endif %}
+    </main>
+{% endblock %}

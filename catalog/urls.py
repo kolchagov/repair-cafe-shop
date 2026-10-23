@@ -1,7 +1,7 @@
 from django.urls import path, include
 
 from catalog.views import CatalogItemListView, CatalogItemDetailView, CatalogItemUpdateView, CatalogDeleteView, \
-    CatalogItemCreateView
+    CatalogItemCreateView, CategoryListView, CategoryDeleteView, CategoryCreateView, CategoryUpdateView
 
 app_name = 'catalog'
 urlpatterns = [
@@ -11,5 +11,11 @@ urlpatterns = [
         path('details', CatalogItemDetailView.as_view(), name='details'),
         path('edit', CatalogItemUpdateView.as_view(), name='edit'),
         path('delete', CatalogDeleteView.as_view(), name='delete'),
+    ])),
+    path('categories/', CategoryListView.as_view(), name='category-list'),
+    path('categories/add/', CategoryCreateView.as_view(), name='category-add'),
+    path('categories/<int:pk>/', include([
+        path('edit', CategoryUpdateView.as_view(), name='category-edit'),
+        path('delete', CategoryDeleteView.as_view(), name='category-delete'),
     ])),
 ]

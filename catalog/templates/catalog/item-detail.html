@@ -4,13 +4,13 @@
 
 {% block content %}
     <main class="container py-4">
-        <h1>{{ item.brand }}</h1>
+        <h2>{{ item.brand }}, SN:{{ item.serial_number }}</h2>
         <div>
-            <h2>Owner</h2>
+            <h3>Owner</h3>
             <p>{{ item.owner_name }}</p>
-            <h2>Category</h2>
+            <h3>Category</h3>
             <p>{{ item.category.name }}</p>
-            <h2>Problem</h2>
+            <h3>Problem</h3>
             <p>{{ item.problem_description }}</p>
         </div>
         {% if item.photo %}
@@ -24,8 +24,8 @@
 {#                <a class="btn btn-success" href="{% url 'repairs:edit' %}?item={{ item.pk }}">Begin repair</a>#}
 {#            {% endif %}#}
             <a class="btn btn-danger" href="{% url 'catalog:delete' item.pk %}">Delete</a>
-            <a href="{% url 'dashboard' %}" class="btn btn-warning">
-                Back to dashboard
+            <a href="{% url 'dashboard' %}" class="btn btn-secondary">
+                Back
             </a>
         </p>
     </main>

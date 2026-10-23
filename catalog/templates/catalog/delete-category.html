@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+
+{% block title %}Delete {{ category }}{% endblock %}
+
+{% block content %}
+    <main class="container py-4">
+        <form action="{% url 'catalog:category-delete' category.id %}" method="post">
+            {% csrf_token %}
+            <h2>{{ category.name }}</h2>
+            <p>{{ category.description }}</p>
+            <div class="alert alert-danger">
+                Warning: you are about to delete whole category! This action cannot be undone!
+            </div>
+            <button type="submit" class="btn btn-danger">
+                Confirm delete
+            </button>
+            <a href="{% url 'catalog:category-list' %}" class="btn btn-secondary">
+                Back
+            </a>
+        </form>
+    </main>
+{% endblock %}

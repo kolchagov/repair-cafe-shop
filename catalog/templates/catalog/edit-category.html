@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+
+{% block title %}Edit category{% endblock %}
+
+{% block content %}
+    <main class="container py-4">
+        <h2>Edit item</h2>
+        <form method="post">
+            {{ form }}
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">
+                Update
+            </button>
+            <a href="{% url 'catalog:category-list' %}" class="btn btn-secondary">
+                Back
+            </a>
+        </form>
+    </main>
+{% endblock %}

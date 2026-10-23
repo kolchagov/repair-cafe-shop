@@ -9,7 +9,7 @@
                 <h1>Repair volunteers</h1>
             </div>
             <div class="col-auto">
-                <a href="{% url 'volunteers:add' %}" class="btn btn-default">
+                <a href="{% url 'volunteers:add' %}" class="btn btn-primary">
                     Add repairer
                 </a>
             </div>
@@ -38,7 +38,7 @@
                                         {% if volunteer.email %}
                                             <a href="mailto:{{ volunteer.email }}">{{ volunteer.email }}</a>
                                         {% else %}
-                                            <span class="text-body-secondary">—</span>
+                                            <span class="text-body-secondary">-</span>
                                         {% endif %}
                                     </td>
                                     <td>{{ volunteer.get_skills_display }}</td>

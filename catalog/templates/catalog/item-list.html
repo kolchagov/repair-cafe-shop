@@ -23,7 +23,7 @@
                                 {{ item.owner_name }}
                             </div>
                             <div class="col">
-                                {{ item.brand }} ({{ item.category.name }}) — {{ item.problem_description }}
+                                {{ item.brand }} ({{ item.category.name }}) - {{ item.problem_description }}
                             </div>
                             <div class="col-auto">
                                 <a href="{% url 'catalog:details' pk=item.id %}"

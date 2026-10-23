@@ -26,6 +26,9 @@
                     </li>
                 {% endfor %}
             </ul>
+            <div class="text-end">
+                {% include 'paginator.html' %}
+            </div>
         {% else %}
             <p>No items have been submitted for repair.</p>
         {% endif %}

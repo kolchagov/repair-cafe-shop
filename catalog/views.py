@@ -9,6 +9,7 @@ from repairs.models import RepairTicket, StatusChoices
 class CatalogItemListView(ListView):
     model = Item
     template_name = "catalog/item-list.html"
+    paginate_by = 3
 
 
 class CatalogItemDetailView(DetailView):

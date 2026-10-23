@@ -21,35 +21,40 @@
                     <div class="table-responsive">
                         <table class="table table-striped align-middle mb-0">
                             <thead>
-                                <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Phone</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Skills</th>
-                                    <th scope="col">Actions</th>
-                                </tr>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Skills</th>
+                                <th scope="col">Actions</th>
+                            </tr>
                             </thead>
                             <tbody>
-                                {% for volunteer in object_list %}
-                                    <tr>
-                                        <td>{{ volunteer.name }}</td>
-                                        <td>{{ volunteer.phone }}</td>
-                                        <td>
-                                            {% if volunteer.email %}
-                                                <a href="mailto:{{ volunteer.email }}">{{ volunteer.email }}</a>
-                                            {% else %}
-                                                <span class="text-body-secondary">—</span>
-                                            {% endif %}
-                                        </td>
-                                        <td>{{ volunteer.get_skills_display }}</td>
-                                        <td class="text-nowrap">
-                                            <a href="{% url 'volunteers:edit' volunteer.pk %}" class="btn btn-sm btn-outline-primary">Edit</a>
-                                            <a href="{% url 'volunteers:delete' volunteer.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
-                                        </td>
-                                    </tr>
-                                {% endfor %}
+                            {% for volunteer in object_list %}
+                                <tr>
+                                    <td>{{ volunteer.name }}</td>
+                                    <td>{{ volunteer.phone }}</td>
+                                    <td>
+                                        {% if volunteer.email %}
+                                            <a href="mailto:{{ volunteer.email }}">{{ volunteer.email }}</a>
+                                        {% else %}
+                                            <span class="text-body-secondary">—</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ volunteer.get_skills_display }}</td>
+                                    <td class="text-nowrap">
+                                        <a href="{% url 'volunteers:edit' volunteer.pk %}"
+                                           class="btn btn-sm btn-outline-primary">Edit</a>
+                                        <a href="{% url 'volunteers:delete' volunteer.pk %}"
+                                           class="btn btn-sm btn-outline-danger">Delete</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
                             </tbody>
                         </table>
+                    </div>
+                    <div class="text-end">
+                        {% include 'paginator.html' %}
                     </div>
                 {% else %}
                     <p class="text-body-secondary mb-0">No repair volunteers listed.</p>

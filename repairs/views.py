@@ -77,6 +77,7 @@ class ReceivedTicketListView(ListView):
     queryset = RepairTicket.objects.filter(status__exact=StatusChoices.RECEIVED).select_related('item')
     context_object_name = 'tickets'
     template_name = 'repairs/ticket-list.html'
+    paginate_by = 3
 
 class InProgressTicketListView(ListView):
     queryset = RepairTicket.objects.filter(status__exact=StatusChoices.IN_PROGRESS).select_related('item')

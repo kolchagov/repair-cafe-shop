@@ -23,6 +23,8 @@ class RepairerDetailsView(DetailView):
 class RepairerListView(ListView):
     template_name = 'volunteers/repairer-list.html'
 
+    paginate_by = 3
+
     def get_queryset(self):
         return Repairer.objects.all()
 

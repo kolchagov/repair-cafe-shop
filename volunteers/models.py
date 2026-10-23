@@ -12,8 +12,8 @@ class Repairer(models.Model):
         max_length=100,
         validators=[
             MinLengthValidator(
-                10,
-                message="Repairer name must be at least 10 characters",
+                3,
+                message="Repairer name must be at least 3 characters",
             )
         ]
     )

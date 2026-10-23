@@ -28,7 +28,7 @@ class Item(models.Model):
         max_length=100,
         validators=[
             RegexValidator(
-                r'^\W*(?:\w+\W+)\w+\W*$',
+                r'^\W*\w+(?:\W+\w+)+\W*$',
                 message='At least two names required'
             )
         ]

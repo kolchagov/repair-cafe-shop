@@ -32,7 +32,11 @@
             </div>
         </div>
         <div class="d-flex justify-content-end">
-            {% if ticket.status == 'received' or ticket.status == 'in-progress' %}
+            {% if request.GET.view == 'true' %}
+                <span onclick="history.go(-1)" class="btn btn-secondary">
+                    Back
+                </span>
+            {% elif ticket.status == 'received' or ticket.status == 'in-progress' %}
                 <a href="{% url 'repairs:begin-repair' ticket.code %}" class="btn btn-primary">
                     To repair
                 </a>
@@ -40,10 +44,6 @@
                 <a href="{% url 'repairs:finished-tickets' %}" class="btn btn-secondary">
                     Back
                 </a>
-            {% else %}
-                <span onclick="history.go(-1)" class="btn btn-secondary">
-                    Back
-                </span>
             {% endif %}
         </div>
     </main>

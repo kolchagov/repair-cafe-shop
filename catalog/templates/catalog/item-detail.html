@@ -19,6 +19,16 @@
             {% if item.photo %}
                 <img src="{{ item.photo.url }}" alt="{{ item.brand }}">
             {% endif %}
+            {% if open_ticket.code %}
+                <div class="row">
+                    <div class="col">
+                        Your ticket code for repair progress tracking:
+                    </div>
+                    <div class="col">
+                        <h3>{{ open_ticket.code }}</h3>
+                    </div>
+                </div>
+            {% endif %}
             <p class="d-flex justify-content-end gap-2">
                 <a class="btn btn-primary" href="{% url 'catalog:edit' item.pk %}">Edit</a>
                 {#            {% if open_ticket %}#}

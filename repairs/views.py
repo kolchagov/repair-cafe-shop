@@ -68,7 +68,8 @@ def ticket_lookup(request):
     if form.is_valid():
         code = form.cleaned_data['code']
         if RepairTicket.objects.filter(code=code).exists():
-            return redirect('repairs:details', code=code)
+            # ?view=true shows the Back button in details
+            return redirect(reverse('repairs:details', args=[code]) + '?view=true')
         form.add_error('code', 'No repair ticket with that code.')
     return render(request, 'repairs/ticket-search.html', {'form': form})
 

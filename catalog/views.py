@@ -37,7 +37,8 @@ class CatalogItemCreateView(CreateView):
         repair_ticket.item = self.object
         repair_ticket.status = StatusChoices.RECEIVED
         repair_ticket.save()
-        return reverse_lazy('dashboard')
+        code = repair_ticket.code
+        return reverse('catalog:details', kwargs={'pk': repair_ticket.id})
 
 
 class CatalogItemUpdateView(UpdateView):
@@ -45,16 +46,19 @@ class CatalogItemUpdateView(UpdateView):
     form_class = ItemForm
     template_name = 'catalog/edit-item.html'
 
+
 class CatalogDeleteView(DeleteView):
     model = Item
     template_name = 'catalog/delete-item.html'
 
     success_url = reverse_lazy('catalog:list')
 
+
 class CategoryListView(ListView):
     model = Category
     template_name = "catalog/category-list.html"
     paginate_by = 3
+
 
 class CategoryCreateView(CreateView):
     model = Category
@@ -64,11 +68,13 @@ class CategoryCreateView(CreateView):
     def get_success_url(self):
         return reverse('catalog:category-list')
 
+
 class CategoryDeleteView(DeleteView):
     model = Category
     template_name = 'catalog/delete-category.html'
 
     success_url = reverse_lazy('catalog:category-list')
+
 
 class CategoryUpdateView(UpdateView):
     model = Category
